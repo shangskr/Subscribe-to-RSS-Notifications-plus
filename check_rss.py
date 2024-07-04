@@ -71,7 +71,7 @@ def get_subscribers_from_issues():
                 email = email_match.group(1).strip()
                 subscribers.append((email, issue['number']))
 
-    print(f"找到的订阅者: {subscribers}")  # 新增的打印语句
+    print(f"找到的订阅者: {subscribers}")
     return subscribers
 
 def check_and_notify():
@@ -134,7 +134,7 @@ def check_and_notify():
             print(f"{feed_title} 没有新文章")
 
     if updated:
-        print("检测到更新，准备发送邮件")  # 新增的打印语句
+        print("检测到更新，准备发送邮件")
         subscribers = get_subscribers_from_issues()
         for subscriber, issue_number in subscribers:
             unsubscribe_link = f"https://github.com/{os.environ['GH_REPO']}/issues/{issue_number}"
@@ -157,9 +157,5 @@ def send_email(subject, message, recipient):
     server.quit()
     print(f"邮件发送成功到 {recipient}")
 
-def test_email():
-    send_email("测试邮件", "这是一封测试邮件", "2622979530@qq.com")
-
 if __name__ == "__main__":
     check_and_notify()
-    test_email()
