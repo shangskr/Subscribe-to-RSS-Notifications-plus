@@ -33,6 +33,7 @@ jobs:
         SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
         SMTP_PORT: ${{ secrets.SMTP_PORT }}
         GH_PAT: ${{ secrets.GH_PAT }}
+        GH_REPO: ${{ github.repository }}
       run: |
         python check_rss.py
         
